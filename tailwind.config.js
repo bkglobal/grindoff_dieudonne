@@ -7,7 +7,7 @@ module.exports = {
     ...defaultTheme,
     extend: {
       lineHeight: {
-        2: '0.5rem'
+        2: '0.5rem',
       },
     },
     screens: {
@@ -23,7 +23,8 @@ module.exports = {
       transparent: 'transparent',
       current: 'currentColor',
       white: 'white',
-      default: 'black',
+      inherit: 'inherit',
+      default: '#1A1A1A',
       disabled: '#a6a6a6',
       warning: { dark: '#b78707', DEFAULT: '#ffc208', disabled: '#ffe597' },
       basic: { disabled: '#ececec', DEFAULT: '#e5e5e5' },

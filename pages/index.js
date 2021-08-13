@@ -1,5 +1,8 @@
 import Head from 'next/head';
-import Button from '../src/components/Button/Button';
+import Button from '../src/components/atoms/Button/Button';
+import Heading from '../src/components/Heading/Heading';
+import Text from '../src/components/Text/Text';
+import Paragraph from '../src/components/Paragraph/Paragraph';
 
 export default function Home() {
   return (
@@ -8,6 +11,9 @@ export default function Home() {
         <title>Create Next App</title>
         <link rel="icon" href="/favicon.ico" />
       </Head>
+
+      <Heading size="5xl">This is the heading</Heading>
+      <Text size="lg">This is the Text</Text>
 
       <Button appearance="primary" size="regular" icon="info">
         Accepted
@@ -32,7 +38,9 @@ export default function Home() {
             className="p-6 mt-6 text-left border w-96 rounded-xl hover:text-blue-600 focus:text-blue-600"
           >
             <h3 className="text-2xl font-bold">Documentation &rarr;</h3>
-            <p className="mt-4 text-xl">Find in-depth information about Next.js features and API.</p>
+            <Paragraph appearance="inherit" className="mt-6">
+              Find in-depth information about Next.js features and API.
+            </Paragraph>
           </a>
 
           <a

@@ -2,10 +2,12 @@ import * as React from 'react';
 import classNames from 'classnames';
 import styled, { keyframes } from 'styled-components';
 
+import { BaseProps } from '../../common-types';
+
 export type Appearance = 'primary' | 'secondary' | 'white';
 export type Size = 'small' | 'medium' | 'large';
 
-export interface SpinnerProps {
+export interface SpinnerProps extends BaseProps {
   /**
    * Color of `Spinner`
    */
@@ -14,8 +16,6 @@ export interface SpinnerProps {
    * Size of `Spinner`
    */
   size?: Size;
-
-  className?: string;
 }
 
 const rotate = keyframes`

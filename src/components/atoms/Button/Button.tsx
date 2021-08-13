@@ -1,10 +1,11 @@
 import React, { MouseEvent } from 'react';
 import classNames from 'classnames';
-import { Alignment, Appearance, ButtonType, Size } from '../common-types';
-import Icon from '../Icon/Icon';
-import Spinner from '../Spinner/Spinner';
 
-export interface ButtonProps {
+import { Alignment, Appearance, BaseProps, ButtonType, Size } from '../../common-types';
+import { Icon } from '../Icon';
+import { Spinner } from '../Spinner';
+
+export interface ButtonProps extends BaseProps {
   /**
    * Type of `Button`
    */
@@ -78,7 +79,9 @@ export interface ButtonProps {
    * Handler to be called when mouse pointer leaves `Button`.
    */
   onMouseLeave?: (event: React.MouseEvent<HTMLButtonElement, MouseEvent>) => void;
-  className?: string;
+  /**
+   * Specifies whether the button is outlined or not
+   */
   outlined?: boolean;
   radius?: 'rounded' | 'square' | 'pill';
 }
