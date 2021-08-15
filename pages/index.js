@@ -1,19 +1,29 @@
 import Head from 'next/head';
-import Button from '../src/components/atoms/Button/Button';
-import Heading from '../src/components/Heading/Heading';
-import Text from '../src/components/Text/Text';
-import Paragraph from '../src/components/Paragraph/Paragraph';
+import { Button } from '../src/components/atoms/Button';
+import { Heading } from '../src/components/atoms/Heading';
+import { Text } from '../src/components/atoms/Text/Text';
+import { Paragraph } from '../src/components/atoms/Paragraph';
+import { FullLogo } from '../src/components/atoms/Logo';
+import { LogoIcon } from '../src/components/atoms/Logo';
+import { Card } from '../src/components/atoms/Card';
+import { PageNavigation } from '../src/components/molecules/Navigation';
 
 export default function Home() {
   return (
-    <div className="flex flex-col items-center justify-center min-h-screen py-2">
+    <div className="flex flex-col items-center justify-center min-h-screen">
       <Head>
         <title>Create Next App</title>
         <link rel="icon" href="/favicon.ico" />
       </Head>
+      <PageNavigation />
 
+      <LogoIcon size="tiny" />
       <Heading size="5xl">This is the heading</Heading>
-      <Text size="lg">This is the Text</Text>
+      <Card shadow="none" className="p-4 my-3">
+        <Text className="hover:border-info hover:border-b hover:text-info" size="lg">
+          This is a text in the card component
+        </Text>
+      </Card>
 
       <Button appearance="primary" size="regular" icon="info">
         Accepted

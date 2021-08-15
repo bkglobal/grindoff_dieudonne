@@ -9,6 +9,9 @@ module.exports = {
       lineHeight: {
         2: '0.5rem',
       },
+      height: {
+        49: '12.4rem',
+      },
     },
     screens: {
       xs: '321px',

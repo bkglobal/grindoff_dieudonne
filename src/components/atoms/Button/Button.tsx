@@ -57,7 +57,7 @@ export interface ButtonProps extends BaseProps {
   /**
    * Text to be added inside `Button`
    */
-  children?: React.ReactText;
+  children?: React.ReactText | React.ReactNode;
   /**
    * Specifies tab index of `Button`
    * @default 0
@@ -84,6 +84,7 @@ export interface ButtonProps extends BaseProps {
    */
   outlined?: boolean;
   radius?: 'rounded' | 'square' | 'pill';
+  noHovering?: boolean;
 }
 
 const sizeMapping: Record<Size, number> = {
@@ -106,22 +107,24 @@ const Button = React.forwardRef<HTMLButtonElement, ButtonProps>((props, ref) => 
     largeIcon,
     children,
     expanded,
+    noHovering,
     selected,
     radius = 'rounded',
     outlined,
   } = props;
 
   const buttonClasses = classNames(
-    `${className} border flex flex-row justify-center box-border relative cursor-pointer select-none align-middle border-0 py-2 text-center font-normal`,
+    `${className} flex flex-row justify-center box-border relative cursor-pointer select-none align-middle border-0 py-2 text-center font-normal`,
     {
       'flex-row-reverse': iconAlign === 'right',
+      border: appearance !== 'transparent',
       [`bg-${appearance}`]: !loading && !disabled && !outlined && appearance,
       [`border-${appearance}`]: !loading && !disabled && !outlined && appearance,
       [`border-${appearance}`]: !loading && !disabled && outlined && appearance,
       [`bg-${appearance}-disabled`]: loading || disabled,
       [`border-${appearance}-disabled`]: loading || disabled,
       [`bg-transparent`]: !loading && !disabled && outlined,
-      [`hover:bg-basic`]: !loading && !disabled && appearance === 'transparent',
+      [`hover:bg-basic`]: !loading && !disabled && !noHovering && appearance === 'transparent',
       [`text-disabled`]: loading || disabled,
       [`rounded`]: radius === 'rounded',
       [`rounded-none`]: radius === 'square',

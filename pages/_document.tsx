@@ -41,7 +41,7 @@ export default class MyDocument extends Document {
           ></link>
           <link href="https://fonts.googleapis.com/css2?family=Material+Icons" rel="stylesheet" />
         </Head>
-        <body className="font-body text-base font-normal subpixel-antialiased">
+        <body className="font-body text-base tracking-tight font-normal subpixel-antialiased">
           <Main />
           <NextScript />
         </body>
