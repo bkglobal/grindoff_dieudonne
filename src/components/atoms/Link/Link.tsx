@@ -1,6 +1,5 @@
 import * as React from 'react';
 import NextLink from 'next/link';
-import GenericText from '../_text';
 import classNames from 'classnames';
 import { BaseHtmlProps, BaseProps } from 'src/components/common-types';
 
@@ -8,7 +7,7 @@ type LinkTarget = '_blank' | '_self' | '_parent' | '_top';
 type Appearance = 'default' | 'subtle' | 'primary';
 type Size = 'base' | 'sm' | 'lg';
 
-export interface LinkProps extends BaseProps, BaseHtmlProps<HTMLLinkElement> {
+export interface LinkProps extends BaseProps, BaseHtmlProps<HTMLAnchorElement> {
   /**
    * HTML ID of `Link`
    */
@@ -72,9 +71,9 @@ export const Link = (props: LinkProps) => {
 
   return (
     <NextLink href={href}>
-      <GenericText className={classes} componentType="a" {...rest}>
+      <a className={classes} {...rest}>
         {children}
-      </GenericText>
+      </a>
     </NextLink>
   );
 };

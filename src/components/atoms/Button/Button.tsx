@@ -1,4 +1,4 @@
-import React, { MouseEvent } from 'react';
+import React from 'react';
 import classNames from 'classnames';
 
 import { Alignment, Appearance, BaseProps, ButtonType, Size } from '../../common-types';
@@ -111,6 +111,9 @@ const Button = React.forwardRef<HTMLButtonElement, ButtonProps>((props, ref) => 
     selected,
     radius = 'rounded',
     outlined,
+    onClick,
+    onMouseEnter,
+    onMouseLeave,
   } = props;
 
   const buttonClasses = classNames(
@@ -131,7 +134,7 @@ const Button = React.forwardRef<HTMLButtonElement, ButtonProps>((props, ref) => 
       [`rounded-lg`]: radius === 'pill',
       [`text-${appearance}`]: !loading && !disabled && outlined && appearance,
       'text-white': appearance !== 'basic' && appearance !== 'transparent' && !outlined,
-      'w-100': expanded,
+      'w-full': expanded,
       'h-7 px-2 text-sm leading-2': size === 'tiny',
       'h-9 px-3 text-base leading-4': size === 'regular',
       'h-11 px-5 text-lg leading-6': size === 'large',
@@ -156,6 +159,9 @@ const Button = React.forwardRef<HTMLButtonElement, ButtonProps>((props, ref) => 
         transition:
           'color 0.15s ease-in-out, background-color 0.15s ease-in-out, border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out',
       }}
+      onClick={onClick}
+      onMouseEnter={onMouseEnter}
+      onMouseLeave={onMouseLeave}
       className={buttonClasses}
       disabled={loading || disabled}
     >

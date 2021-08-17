@@ -3,7 +3,7 @@ import * as ReactDOM from 'react-dom';
 import classNames from 'classnames';
 import { BaseHtmlProps, BaseProps } from 'src/components/common-types';
 
-export interface OutsideClickProps extends BaseHtmlProps<HTMLDivElement>, BaseProps {
+export interface OutsideClickProps extends BaseHtmlProps<HTMLSpanElement>, BaseProps {
   /**
    * Trigger the function on outside click
    */
@@ -12,6 +12,10 @@ export interface OutsideClickProps extends BaseHtmlProps<HTMLDivElement>, BasePr
    * Element to be rendered
    */
   children: React.ReactElement<any>;
+  /**
+   * Handler to be called when `OutsideClick` is clicked
+   */
+  onClick?: (event: React.MouseEvent<HTMLButtonElement, MouseEvent>) => void;
 }
 
 export const OutsideClick = React.forwardRef<HTMLDivElement, OutsideClickProps>((props, ref) => {
@@ -43,9 +47,9 @@ export const OutsideClick = React.forwardRef<HTMLDivElement, OutsideClickProps>(
   const classes = classNames(className);
 
   return (
-    <div ref={innerRef} {...rest} className={classes}>
+    <span ref={innerRef} {...rest} className={classes}>
       {children}
-    </div>
+    </span>
   );
 });
 

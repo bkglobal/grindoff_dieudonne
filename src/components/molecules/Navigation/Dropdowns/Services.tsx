@@ -38,8 +38,8 @@ const Services = ({ open, onClose }: Props) => {
   return (
     <ServicesWrapper className={classes}>
       <div className="grid grid-cols-3 gap-y-6 gap-x-16 mb-4 Services">
-        {services.map((svc) => (
-          <Link decorated={false} onClick={onClose} key={svc} href="#">
+        {services.map((svc, i) => (
+          <Link decorated={false} onClick={onClose} key={i} href="#">
             {svc}
           </Link>
         ))}
