@@ -13,7 +13,7 @@ const Sidenav = () => {
   const [openSideNav, setOpenSideNav] = useState<boolean | null>(null);
 
   const sidenavClasses = classNames({
-    ['h-full fixed left-0 top-0 bottom-0 w-full bg-white shadow-lg z-10']: true,
+    ['h-full fixed left-0 top-0 bottom-0 w-full bg-white shadow-lg z-10 md:hidden']: true,
     ['transition-all']: openSideNav,
   });
 
