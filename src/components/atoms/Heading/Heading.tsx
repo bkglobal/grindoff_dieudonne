@@ -4,7 +4,7 @@ import classNames from 'classnames';
 import GenericText from '../_text';
 import { BaseHtmlProps, BaseProps } from 'src/components/common-types';
 
-export type Size = 'lg' | 'xl' | '2xl' | '3xl' | '4xl' | '5xl';
+export type Size = 'lg' | 'xl' | '2xl' | '3xl' | '4xl' | '5xl' | '6xl';
 export type Appearance = 'default' | 'subtle' | 'disabled' | 'white';
 
 export interface HeadingProps extends BaseProps, BaseHtmlProps<HTMLHeadingElement> {
@@ -29,6 +29,7 @@ const sizeMap = {
   '3xl': 'h3',
   '4xl': 'h2',
   '5xl': 'h1',
+  '6xl': 'h1',
 };
 
 export const Heading = (props: HeadingProps) => {
@@ -45,7 +46,7 @@ export const Heading = (props: HeadingProps) => {
   );
 
   return (
-    <GenericText {...rest} className={classes} componentType={sizeMap[size]}>
+    <GenericText className={classes} componentType={sizeMap[size]} {...rest}>
       {children}
     </GenericText>
   );

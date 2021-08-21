@@ -19,9 +19,6 @@ const services = [
 
 const ServicesWrapper = styled.div`
   top: 3.4rem;
-  .Services {
-    width: 800px;
-  }
 `;
 
 interface Props {
@@ -32,12 +29,12 @@ interface Props {
 const Services = ({ open, onClose }: Props) => {
   const classes = classNames({
     ['invisible']: !open,
-    ['flex flex-col items-start rounded shadow-md bg-white px-6 py-4 absolute -right-80 z-10']: true,
+    ['flex flex-col items-start rounded shadow-md bg-white px-6 py-4 absolute md:-left-96 lg:-right-80 z-10']: true,
   });
 
   return (
     <ServicesWrapper className={classes}>
-      <div className="grid grid-cols-3 gap-y-6 gap-x-16 mb-4 Services">
+      <div className="grid grid-cols-3 gap-y-6 gap-x-16 mb-4 Services" style={{ width: '800px' }}>
         {services.map((svc, i) => (
           <Link decorated={false} onClick={onClose} key={i} href="#">
             {svc}

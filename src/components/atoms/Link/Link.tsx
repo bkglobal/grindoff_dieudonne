@@ -49,7 +49,7 @@ export interface LinkProps extends BaseProps, BaseHtmlProps<HTMLAnchorElement> {
 }
 
 const sizeMapping = {
-  sm: 'base',
+  sm: 'sm',
   base: 'lg',
   lg: 'xl',
 };
@@ -60,7 +60,7 @@ export const Link = (props: LinkProps) => {
   const classes = classNames(
     {
       'font-normal relative cursor-pointer': true,
-      ['hover:font-medium hover:underline hover:text-info']: !disabled && decorated,
+      ['hover:font-medium hover:underline hover:text-primary']: !disabled && decorated,
       [`text-${appearance}`]: !disabled && appearance,
       [`text-disabled`]: disabled,
       [`text-${sizeMapping[size]}`]: sizeMapping[size],

@@ -2,6 +2,7 @@ import classNames from 'classnames';
 import React, { useState } from 'react';
 import { Button } from 'src/components/atoms/Button';
 import { Icon } from 'src/components/atoms/Icon';
+import { Link } from 'src/components/atoms/Link';
 import { FullLogo } from 'src/components/atoms/Logo';
 import AboutGrindOffIcon from 'src/components/atoms/Svgs/AboutGrindOffIcon';
 import CareersIcon from 'src/components/atoms/Svgs/CareersIcon';
@@ -13,7 +14,7 @@ const Sidenav = () => {
   const [openSideNav, setOpenSideNav] = useState<boolean | null>(null);
 
   const sidenavClasses = classNames({
-    ['h-full fixed left-0 top-0 bottom-0 w-full bg-white shadow-lg z-10']: true,
+    ['h-full fixed left-0 top-0 bottom-0 w-full bg-white shadow-lg z-10 md:hidden']: true,
     ['transition-all']: openSideNav,
   });
 
@@ -42,21 +43,21 @@ const Sidenav = () => {
             </Button>
 
             <nav className="mt-10">
-              <span className="flex items-center p-4 px-3">
+              <Link href="#" decorated={false} className="flex items-center p-4 px-3 hover:bg-gray-50 focus-within:shadow-spread-info">
                 <AboutGrindOffIcon className="mr-4" /> About Grindoff
-              </span>
-              <span className="flex items-center p-4 px-3">
+              </Link>
+              <Link href="#" decorated={false} className="flex items-center p-4 px-3 hover:bg-gray-50 focus-within:shadow-spread-info">
                 <ServicesIcon className="mr-4" /> Services
-              </span>
-              <span className="flex items-center p-4 px-3">
+              </Link>
+              <Link href="#" decorated={false} className="flex items-center p-4 px-3 hover:bg-gray-50 focus-within:shadow-spread-info">
                 <CareersIcon className="mr-4" /> Careers
-              </span>
-              <span className="flex items-center p-4 px-3">
+              </Link>
+              <Link href="#" decorated={false} className="flex items-center p-4 px-3 hover:bg-gray-50 focus-within:shadow-spread-info">
                 <FaqIcon className="mr-4" /> FAQs
-              </span>
-              <span className="flex items-center p-4 px-3">
+              </Link>
+              <Link href="#" decorated={false} className="flex items-center p-4 px-3 hover:bg-gray-50 focus-within:shadow-spread-info">
                 <HelpIcon className="mr-4" /> Help
-              </span>
+              </Link>
             </nav>
           </div>
         </div>

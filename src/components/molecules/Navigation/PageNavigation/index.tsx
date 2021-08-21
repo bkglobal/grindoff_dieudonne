@@ -3,12 +3,9 @@ import { Button } from 'src/components/atoms/Button';
 import { Icon } from 'src/components/atoms/Icon';
 import { Link } from 'src/components/atoms/Link';
 import { FullLogo } from 'src/components/atoms/Logo';
-import OutsideClick from 'src/components/atoms/OutsideClick/OutsideClick';
-import styled from 'styled-components';
+import { OutsideClick } from 'src/components/atoms/OutsideClick';
 import Services from '../Dropdowns/Services';
 import Sidenav from '../Sidenav';
-
-const Nav = styled.nav``;
 
 const PageNavigation = () => {
   const [showServices, setShowServices] = useState(false);

@@ -85,6 +85,7 @@ export interface ButtonProps extends BaseProps {
   outlined?: boolean;
   radius?: 'rounded' | 'square' | 'pill';
   noHovering?: boolean;
+  defaultText?: boolean;
 }
 
 const sizeMapping: Record<Size, number> = {
@@ -100,9 +101,9 @@ const Button = React.forwardRef<HTMLButtonElement, ButtonProps>((props, ref) => 
     size = 'regular',
     tabIndex = 0,
     appearance = 'basic',
-    disabled,
+    disabled = false,
     className,
-    loading,
+    loading = false,
     iconAlign = 'left',
     largeIcon,
     children,
@@ -110,20 +111,23 @@ const Button = React.forwardRef<HTMLButtonElement, ButtonProps>((props, ref) => 
     noHovering,
     selected,
     radius = 'rounded',
-    outlined,
+    outlined = false,
+    defaultText,
     onClick,
     onMouseEnter,
     onMouseLeave,
   } = props;
 
+  console.log(!loading && !disabled && !outlined && !!appearance);
+
   const buttonClasses = classNames(
-    `${className} flex flex-row justify-center box-border relative cursor-pointer select-none align-middle border-0 py-2 text-center font-normal`,
+    'flex flex-row justify-center box-border relative cursor-pointer select-none align-middle border-0 py-2 text-center font-normal',
     {
       'flex-row-reverse': iconAlign === 'right',
       border: appearance !== 'transparent',
-      [`bg-${appearance}`]: !loading && !disabled && !outlined && appearance,
-      [`border-${appearance}`]: !loading && !disabled && !outlined && appearance,
-      [`border-${appearance}`]: !loading && !disabled && outlined && appearance,
+      [`bg-${appearance}`]: !loading && !disabled && !outlined && !!appearance,
+      [`border-${appearance}`]: !loading && !disabled && !outlined && !!appearance,
+      [`border-${appearance}`]: !loading && !disabled && outlined && !!appearance,
       [`bg-${appearance}-disabled`]: loading || disabled,
       [`border-${appearance}-disabled`]: loading || disabled,
       [`bg-transparent`]: !loading && !disabled && outlined,
@@ -132,14 +136,15 @@ const Button = React.forwardRef<HTMLButtonElement, ButtonProps>((props, ref) => 
       [`rounded`]: radius === 'rounded',
       [`rounded-none`]: radius === 'square',
       [`rounded-lg`]: radius === 'pill',
-      [`text-${appearance}`]: !loading && !disabled && outlined && appearance,
+      [`text-${appearance}`]: !loading && !disabled && !defaultText && outlined && appearance,
       'text-white': appearance !== 'basic' && appearance !== 'transparent' && !outlined,
       'w-full': expanded,
       'h-7 px-2 text-sm leading-2': size === 'tiny',
       'h-9 px-3 text-base leading-4': size === 'regular',
-      'h-11 px-5 text-lg leading-6': size === 'large',
+      'h-12 px-5 text-lg leading-7': size === 'large',
       'cursor-not-allowed': loading || disabled,
-    }
+    },
+    className
   );
 
   const iconClass = classNames({

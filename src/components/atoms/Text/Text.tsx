@@ -23,7 +23,7 @@ export interface TextProps extends BaseProps, BaseHtmlProps<HTMLSpanElement> {
   /**
    * Denotes weight of `Text`
    */
-  weight?: 'bold' | 'normal';
+  weight?: 'bold' | 'normal' | 'light' | 'extralight';
   /**
    * Color of `Text`
    */
@@ -35,7 +35,7 @@ export interface TextProps extends BaseProps, BaseHtmlProps<HTMLSpanElement> {
 }
 
 const sizeMapping = {
-  sm: 'base',
+  sm: 'sm',
   base: 'lg',
   lg: 'xl',
 };
@@ -45,7 +45,6 @@ export const Text = (props: TextProps) => {
 
   const classes = classNames(
     {
-      'font-normal': true,
       [`text-${appearance}`]: appearance,
       [`font-${weight}`]: weight,
       [`text-${sizeMapping[size]}`]: sizeMapping[size],
