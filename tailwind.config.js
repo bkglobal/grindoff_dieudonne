@@ -7,13 +7,22 @@ module.exports = {
     ...defaultTheme,
     extend: {
       lineHeight: {
+        1: '0.1rem',
         2: '0.5rem',
+        'extra-loose': 1.2,
       },
       height: {
         49: '12.4rem',
       },
+      borderColor: {
+        DEFAULT: '#E5E5E5',
+      },
+      boxShadow: {
+        'spread-info': '0 0 0 3px rgba(0, 112, 221, 0.16)',
+      },
     },
     screens: {
+      xx: '100px',
       xs: '321px',
       sm: '415px',
       md: '769px',
@@ -30,7 +39,7 @@ module.exports = {
       default: '#1A1A1A',
       disabled: '#a6a6a6',
       warning: { dark: '#b78707', DEFAULT: '#ffc208', disabled: '#ffe597' },
-      basic: { disabled: '#ececec', DEFAULT: '#e5e5e5' },
+      basic: { disabled: '#ececec', DEFAULT: '#e5e5e5', lightest: '#f4f4f4' },
       info: { disabled: '#97c5f0', DEFAULT: '#0070dd', dark: '#00509f' },
       primary: { disabled: 'rgba(20, 168, 0, 0.4)', DEFAULT: '#14A800' },
       success: { disabled: 'rgba(20, 168, 0, 0.4)', DEFAULT: '#14A800' },
@@ -47,4 +56,5 @@ module.exports = {
     extend: {},
   },
   plugins: [],
+  important: true,
 };
