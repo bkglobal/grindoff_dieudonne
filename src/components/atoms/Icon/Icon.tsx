@@ -72,7 +72,7 @@ export const Icon = (props: IconProps) => {
   const iconClass = classNames({
     ['material-icons flex-shrink-0 overflow-hidden select-none']: true,
     [`material-icons-${mapper(type)}`]: type && type !== 'filled',
-    [`text--${appearance}`]: appearance,
+    [`text-${appearance}`]: appearance,
     [`${className}`]: className,
   });
 

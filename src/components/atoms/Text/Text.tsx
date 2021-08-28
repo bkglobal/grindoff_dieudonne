@@ -4,7 +4,7 @@ import classNames from 'classnames';
 import GenericText from '../_text';
 import { BaseHtmlProps, BaseProps } from '../../common-types';
 
-export type Size = 'base' | 'sm' | 'lg';
+export type Size = 'base' | 'sm' | 'lg' | 'xl';
 export type Appearance =
   | 'default'
   | 'inherit'
@@ -19,11 +19,11 @@ export interface TextProps extends BaseProps, BaseHtmlProps<HTMLSpanElement> {
   /**
    * Text to be rendered
    */
-  children: React.ReactText;
+  children: React.ReactText | React.ReactNode;
   /**
    * Denotes weight of `Text`
    */
-  weight?: 'bold' | 'normal' | 'light' | 'extralight';
+  weight?: 'bold' | 'normal' | 'light' | 'extralight' | 'semibold';
   /**
    * Color of `Text`
    */
@@ -38,6 +38,7 @@ const sizeMapping = {
   sm: 'sm',
   base: 'lg',
   lg: 'xl',
+  xl: '2xl',
 };
 
 export const Text = (props: TextProps) => {

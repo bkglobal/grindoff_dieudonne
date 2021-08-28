@@ -86,6 +86,7 @@ export interface ButtonProps extends BaseProps {
   radius?: 'rounded' | 'square' | 'pill';
   noHovering?: boolean;
   defaultText?: boolean;
+  iconProps?: any & BaseProps;
 }
 
 const sizeMapping: Record<Size, number> = {
@@ -113,12 +114,11 @@ const Button = React.forwardRef<HTMLButtonElement, ButtonProps>((props, ref) => 
     radius = 'rounded',
     outlined = false,
     defaultText,
+    iconProps = {},
     onClick,
     onMouseEnter,
     onMouseLeave,
   } = props;
-
-  console.log(!loading && !disabled && !outlined && !!appearance);
 
   const buttonClasses = classNames(
     'flex flex-row justify-center box-border relative cursor-pointer select-none align-middle border-0 py-2 text-center font-normal',
@@ -136,8 +136,8 @@ const Button = React.forwardRef<HTMLButtonElement, ButtonProps>((props, ref) => 
       [`rounded`]: radius === 'rounded',
       [`rounded-none`]: radius === 'square',
       [`rounded-lg`]: radius === 'pill',
-      [`text-${appearance}`]: !loading && !disabled && !defaultText && outlined && appearance,
       'text-white': appearance !== 'basic' && appearance !== 'transparent' && !outlined,
+      [`text-${appearance}`]: !loading && !disabled && !defaultText && outlined && appearance,
       'w-full': expanded,
       'h-7 px-2 text-sm leading-2': size === 'tiny',
       'h-9 px-3 text-base leading-4': size === 'regular',
@@ -192,6 +192,7 @@ const Button = React.forwardRef<HTMLButtonElement, ButtonProps>((props, ref) => 
                 }
                 size={largeIcon && !children ? sizeMapping[size] + 4 : sizeMapping[size]}
                 className={size === 'large' ? 'leading-6' : size === 'tiny' ? 'leading-2' : 'leading-4'}
+                {...iconProps}
               />
             </div>
           )}

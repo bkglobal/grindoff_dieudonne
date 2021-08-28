@@ -40,8 +40,9 @@ export default class MyDocument extends Document {
             rel="stylesheet"
           ></link>
           <link href="https://fonts.googleapis.com/css2?family=Material+Icons" rel="stylesheet" />
+          <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.11.2/css/all.css" />
         </Head>
-        <body className="font-body text-base tracking-tight font-normal subpixel-antialiased">
+        <body className="font-body text-base tracking-tight font-light subpixel-antialiased">
           <Main />
           <NextScript />
         </body>

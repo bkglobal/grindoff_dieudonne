@@ -14,21 +14,26 @@ export interface CardProps extends BaseProps, BaseHtmlProps<HTMLDivElement> {
    * Radius of `Card`
    * @default 'rounded'
    */
-  radius?: 'rounded' | 'square' | 'pill'
+  radius?: 'rounded' | 'square' | 'pill';
+  defaultBorder?: boolean
 }
 
 export const Card = React.forwardRef<HTMLDivElement, CardProps>((props, ref) => {
-  const { shadow = 'light', radius = 'rounded', children, className, ...rest } = props;
+  const { shadow = 'light', radius = 'rounded', defaultBorder = true, children, className, ...rest } = props;
 
-  const classes = classNames({
-    shadow: shadow === 'light',
-    [`shadow-md`]: shadow === 'medium',
-    [`shadow-lg`]: shadow === 'dark',
-    [`rounded`]: radius === 'rounded',
-    [`rounded-none`]: radius === 'square',
-    [`rounded-xl`]: radius === 'pill',
-    [`relative overflow-hidden bg-white border border-basic ${className}`]: className,
-  });
+  const classes = classNames(
+    {
+      shadow: shadow === 'light',
+      [`shadow-md`]: shadow === 'medium',
+      [`shadow-lg`]: shadow === 'dark',
+      [`rounded`]: radius === 'rounded',
+      [`rounded-none`]: radius === 'square',
+      [`rounded-xl`]: radius === 'pill',
+      [`relative overflow-hidden bg-white`]: true,
+      [`border border-basic`]: defaultBorder,
+    },
+    className
+  );
 
   return (
     <div ref={ref} {...rest} className={classes}>
