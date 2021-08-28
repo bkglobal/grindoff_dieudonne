@@ -11,7 +11,7 @@ const PageNavigation = () => {
   const [showServices, setShowServices] = useState(false);
 
   return (
-    <header className="w-full shadow py-3">
+    <header className="w-full shadow py-3 sticky top-0 bg-white z-20">
       <div className="px-3 lg:px-16 flex justify-between">
         <div className="flex items-center">
           <Sidenav />
