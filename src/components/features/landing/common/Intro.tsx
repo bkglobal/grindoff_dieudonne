@@ -1,3 +1,4 @@
+import { useRouter } from 'next/dist/client/router';
 import React from 'react';
 import { Button } from 'src/components/atoms/Button';
 import { Heading } from 'src/components/atoms/Heading';
@@ -7,6 +8,11 @@ import { Link } from 'src/components/atoms/Link';
 import { Text } from 'src/components/atoms/Text';
 
 const Intro = () => {
+  const router = useRouter()
+  const handleScrollBottom = () => {
+    router.push('#footer')
+  }
+
   return (
     <div className="relative flex flex-col">
       <div className="px-3 lg:px-16 sm:mt-6 md:mt-0 flex justify-between flex-wrap sm:flex-nowrap">
@@ -107,7 +113,7 @@ const Intro = () => {
         </div>
       </div>
       <div className="flex flex-col items-center relative my-10 mb-12 md:mb-0 h-6">
-        <button className="absolute top-0 md:-top-20 bg-white border-none rounded-full shadow-lg p-3 flex justify-items-center items-center">
+        <button onClick={handleScrollBottom} className="absolute top-0 md:-top-20 bg-white border-none rounded-full shadow-lg p-3 flex justify-items-center items-center">
           <Icon name="south" />
         </button>
       </div>

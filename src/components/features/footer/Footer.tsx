@@ -34,7 +34,7 @@ const Footer = () => {
   };
 
   return (
-    <footer className="bg-white w-full flex flex-col sm:px-10 md:px-14 lg:px-40 pt-28">
+    <footer id="footer" className="bg-white w-full flex flex-col sm:px-10 md:px-14 lg:px-40 pt-28">
       <div className="xx:px-3 sm:px-0 xx:flex xx:flex-col sm:grid sm:grid-rows-1 sm:grid-cols-12 xx:pb-4 sm:pb-16 sm:border-b">
         <div className="sm:col-start-1 sm:col-span-3 flex flex-col items-start xx:border-b sm:border-none">
           <div
