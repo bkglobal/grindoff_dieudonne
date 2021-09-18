@@ -5,6 +5,7 @@ export type Appearance =
   | 'default'
   | 'warning-disabled'
   | 'warning'
+  | 'warning-light'
   | 'warning-dark'
   | 'basic-disabled'
   | 'basic'
@@ -15,6 +16,9 @@ export type Appearance =
   | 'primary-disabled'
   | 'primary'
   | 'primary-dark'
+  | 'primary-lighter'
+  | 'primary-light'
+  | 'primary-lightest'
   | 'success-disabled'
   | 'success'
   | 'success-dark'
@@ -37,7 +41,7 @@ export interface IconProps {
   /**
    * Size of `Icon`
    */
-  size: number;
+  size?: number;
   /**
    * Type of material `Icon`
    *

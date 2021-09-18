@@ -13,7 +13,7 @@ module.exports = {
         'get-started-2': 'url("/assets/home/ready-to-get-started-2.jpg")',
       }),
       inset: {
-        '100': '408px'
+        100: '408px',
       },
       backgroundPosition: {
         'choose-grindoff': '35% 50%',
@@ -37,6 +37,7 @@ module.exports = {
       },
       height: {
         49: '12.4rem',
+        300: '300px',
         400: '400px',
         500: '500px',
         600: '600px',
@@ -61,6 +62,7 @@ module.exports = {
       },
       boxShadow: {
         'spread-info': '0 0 0 3px rgba(0, 112, 221, 0.16)',
+        'spread-alert': '0 0 0 3px rgba(253, 0, 0, 0.14)',
       },
     },
     screens: {
@@ -80,16 +82,27 @@ module.exports = {
       inherit: 'inherit',
       default: '#1A1A1A',
       disabled: '#a6a6a6',
+      body: {
+        grey: '#F9FAFB',
+      },
       dark: {
         lightest: 'rgba(0, 0, 0, 0.07)',
         light: 'rgba(0, 0, 0, 0.6)',
         DEFAULT: 'rgba(0, 0, 0, 0.9)',
+        blue: 'rgba(51, 51, 51, 0.3)',
       },
-      warning: { dark: '#b78707', DEFAULT: '#ffc208', disabled: '#ffe597' },
-      basic: { disabled: '#ececec', DEFAULT: '#e5e5e5', light: '#fbfbfb', lightest: '#f4f4f4' },
+      warning: { dark: '#b78707', DEFAULT: '#ffc208', disabled: '#ffe597', light: 'rgba(255, 194, 8, 0.5)' },
+      basic: {
+        disabled: '#ececec',
+        DEFAULT: '#e5e5e5',
+        light: '#fbfbfb',
+        lightest: '#f4f4f4',
+        transparent: 'rgba(229, 229, 229, 0.15)',
+      },
       info: { disabled: '#97c5f0', DEFAULT: '#0070dd', dark: '#00509f' },
       primary: {
         disabled: 'rgba(20, 168, 0, 0.4)',
+        dark: '#118f00',
         DEFAULT: '#14A800',
         lighter: 'rgba(20, 168, 0, 0.2)',
         light: 'rgba(20, 168, 0, 0.15)',

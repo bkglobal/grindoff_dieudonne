@@ -3,11 +3,13 @@ import classNames from 'classnames';
 import { BaseHtmlProps, BaseProps } from 'src/components/common-types';
 import { IconProps } from '../../../index.types';
 import { Icon } from '../Icon';
-import { Text } from '../Text';
+import { OutsideClick } from '../OutsideClick';
 
-export type InputType = 'text' | 'password' | 'number' | 'email' | 'tel' | 'url';
+export type InputType = 'text' | 'password' | 'number' | 'email' | 'tel' | 'url' | 'date';
 export type AutoComplete = 'on' | 'off';
 export type Size = 'tiny' | 'regular' | 'large';
+
+export type InputDropdownOption = { label: string; value: string };
 
 export interface InputProps extends BaseProps, BaseHtmlProps<HTMLInputElement> {
   /**
@@ -40,10 +42,6 @@ export interface InputProps extends BaseProps, BaseHtmlProps<HTMLInputElement> {
    * Material icon name
    */
   icon?: string;
-  /**
-   * Label to be displayed inside `Input`
-   */
-  inlineLabel?: string;
   /**
    * Disables the `Input`, making it unable to type
    */
@@ -84,11 +82,6 @@ export interface InputProps extends BaseProps, BaseHtmlProps<HTMLInputElement> {
    */
   maxLength?: number;
   /**
-   * The pattern attribute, when specified, is a regular expression that the input's value
-   * must match in order for the value to pass constraint validation.
-   */
-  pattern?: string;
-  /**
    * Shows error state in case of failed validation
    */
   error?: boolean;
@@ -123,8 +116,25 @@ export interface InputProps extends BaseProps, BaseHtmlProps<HTMLInputElement> {
    * Custom Icon Component to be passed to Input to replace Clear Icon in the right
    */
   actionIcon?: React.ReactElement<IconProps>;
+  /**
+   * Dropdown change handler
+   */
+  onDropdownChange?: (value: string) => void;
+  /**
+   * The type of the input field
+   * @default `default`
+   */
+  inputType?: 'default' | 'dropdown';
+  /**
+   * Dropdown options
+   */
+  dropdownOptions?: Array<InputDropdownOption>;
 
   outline?: boolean;
+
+  customIcon?: React.ReactNode;
+
+  align?: 'left' | 'center' | 'right';
 }
 
 const sizeMapping = {
@@ -134,18 +144,23 @@ const sizeMapping = {
 };
 
 export const Input = React.forwardRef<HTMLInputElement, InputProps>((props, forwardedRef) => {
+  const [showDropdown, setShowDropdown] = React.useState(false);
   const {
     size = 'regular',
     type = 'text',
     minWidth = type !== 'number' ? 256 : undefined,
     defaultValue,
+    onDropdownChange = () => {},
+    dropdownOptions = [],
     name,
+    inputType = 'default',
     placeholder,
+    customIcon = '',
     value,
     icon,
-    inlineLabel,
     required,
     error,
+    align = 'left',
     onChange,
     onClick,
     onClear,
@@ -172,23 +187,37 @@ export const Input = React.forwardRef<HTMLInputElement, InputProps>((props, forw
   React.useEffect(() => {
     if (autoFocus) ref.current?.focus({ preventScroll: true });
   }, []);
+  React.useEffect(() => {
+    if (inputType === 'dropdown' && !!value) setShowDropdown(true);
+    else if (inputType === 'dropdown' && !value) setShowDropdown(false);
+  }, [value]);
 
   const classes = classNames(
     {
-      ['flex flex-grow items-center box-border rounded border px-3 bg-white']: true,
+      ['flex flex-grow items-center box-border rounded border px-3 bg-white relative']: true,
       // ['hover:bg-basic-lightest hover:border-basic-lightest']: true,
-      ['focus-within:bg-white focus-within:border-info focus-within:shadow-spread-info']: outline,
-      ['h-12 py-3']: size === 'large',
-      ['h-9 py-2']: size === 'regular',
-      ['h-6 py-1']: size === 'tiny',
+      ['focus-within:bg-white focus-within:border-info focus-within:shadow-spread-info']: outline && !error,
+      ['h-13 py-3']: size === 'large',
+      ['h-10 py-2']: size === 'regular',
+      ['h-7 py-1']: size === 'tiny',
       ['bg-basic-lightest border-basic-lightest pointer-events-none']: disabled || readOnly,
-      ['bg-white border-alert']: error,
+      ['bg-white border-alert focus-within:bg-white focus-within:border-alert focus-within:shadow-spread-alert']: error,
     },
     className
   );
 
+  const dropdownClasses = classNames(
+    {
+      ['top-12']: size === 'large',
+      ['top-9']: size === 'regular',
+      ['top-6']: size === 'tiny',
+    },
+    'flex flex-col bg-white absolute left-0 w-full shadow-lg border z-10 transition duration-500 ease-in-out'
+  );
+
   const inputClass = classNames({
     ['w-full flex bg-transparent border-0 p-0 m-0 focus:outline-none']: true,
+    [`text-${align}`]: align,
   });
 
   const leftIconClass = classNames({
@@ -198,20 +227,19 @@ export const Input = React.forwardRef<HTMLInputElement, InputProps>((props, forw
   });
 
   const rightIconClass = classNames({
-    ['flex items-center']: true,
-    ['ml-2 text-subtle']: true,
+    ['flex items-center ml-2 text-subtle cursor-pointer']: true,
   });
 
-  return (
+  const renderInput = () => (
     <div className={classes} style={{ minWidth }} onClick={() => ref.current?.focus()}>
-      {inlineLabel && (
-        <div className="Input-inlineLabel">
-          <Text appearance="subtle">{inlineLabel}</Text>
-        </div>
-      )}
       {size !== 'tiny' && icon && (
         <div className={leftIconClass}>
           <Icon name={icon} size={sizeMapping[size]} />
+        </div>
+      )}
+      {size !== 'tiny' && customIcon && (
+        <div className={leftIconClass} style={{ fontSize: sizeMapping[size] }}>
+          {customIcon}
         </div>
       )}
       <input
@@ -241,8 +269,25 @@ export const Input = React.forwardRef<HTMLInputElement, InputProps>((props, forw
               <Icon name={'close'} size={sizeMapping[size]} />
             </div>
           )}
+      {inputType === 'dropdown' && showDropdown && !!dropdownOptions.length && (
+        <div className={dropdownClasses}>
+          {dropdownOptions.map((option) => (
+            <span
+              onClick={() => onDropdownChange(option.value)}
+              className={classNames('px-4 py-4 hover:bg-body-grey cursor-pointer', {
+                ['bg-body-grey']: value === option.value,
+              })}
+              key={option.label}
+            >
+              {option.label}
+            </span>
+          ))}
+        </div>
+      )}
     </div>
   );
+  if (inputType !== 'dropdown') return <>{renderInput()}</>;
+  return <OutsideClick onOutsideClick={() => setShowDropdown(false)}>{renderInput()}</OutsideClick>;
 });
 
 Input.displayName = 'Input';

@@ -4,6 +4,7 @@ import classNames from 'classnames';
 import { Alignment, Appearance, BaseProps, ButtonType, Size } from '../../common-types';
 import { Icon } from '../Icon';
 import { Spinner } from '../Spinner';
+import { IconProps } from '../Icon/Icon';
 
 export interface ButtonProps extends BaseProps {
   /**
@@ -86,7 +87,7 @@ export interface ButtonProps extends BaseProps {
   radius?: 'rounded' | 'square' | 'pill';
   noHovering?: boolean;
   defaultText?: boolean;
-  iconProps?: any & BaseProps;
+  iconProps?: IconProps;
 }
 
 const sizeMapping: Record<Size, number> = {
@@ -141,7 +142,7 @@ const Button = React.forwardRef<HTMLButtonElement, ButtonProps>((props, ref) => 
       'w-full': expanded,
       'h-7 px-2 text-sm leading-2': size === 'tiny',
       'h-9 px-3 text-base leading-4': size === 'regular',
-      'h-12 px-5 text-lg leading-7': size === 'large',
+      'h-13 px-5 text-lg leading-7': size === 'large',
       'cursor-not-allowed': loading || disabled,
     },
     className
@@ -149,10 +150,10 @@ const Button = React.forwardRef<HTMLButtonElement, ButtonProps>((props, ref) => 
 
   const iconClass = classNames({
     ['h-full']: true,
-    [`mr-2`]: iconAlign === 'left' && size !== 'tiny',
-    [`ml-2`]: iconAlign === 'right' && size !== 'tiny',
-    [`mr-1`]: iconAlign === 'left' && size === 'tiny',
-    [`ml-1`]: iconAlign === 'right' && size === 'tiny',
+    [`mr-2`]: iconAlign === 'left' && children && size !== 'tiny',
+    [`ml-2`]: iconAlign === 'right' && children && size !== 'tiny',
+    [`mr-1`]: iconAlign === 'left' && children && size === 'tiny',
+    [`ml-1`]: iconAlign === 'right' && children && size === 'tiny',
   });
 
   return (
@@ -172,7 +173,7 @@ const Button = React.forwardRef<HTMLButtonElement, ButtonProps>((props, ref) => 
     >
       {loading ? (
         <>
-          <Spinner size="small" className={size === 'large' ? 'mr-1' : ''} appearance="white" />
+          <Spinner size="small" className={size === 'large' && children ? 'mr-1' : ''} appearance="white" />
           {children}
         </>
       ) : (
@@ -191,7 +192,15 @@ const Button = React.forwardRef<HTMLButtonElement, ButtonProps>((props, ref) => 
                     : 'white'
                 }
                 size={largeIcon && !children ? sizeMapping[size] + 4 : sizeMapping[size]}
-                className={size === 'large' ? 'leading-6' : size === 'tiny' ? 'leading-2' : 'leading-4'}
+                className={
+                  size === 'large'
+                    ? 'leading-7'
+                    : size === 'tiny'
+                    ? 'leading-2'
+                    : children
+                    ? 'leading-4'
+                    : 'leading-5'
+                }
                 {...iconProps}
               />
             </div>

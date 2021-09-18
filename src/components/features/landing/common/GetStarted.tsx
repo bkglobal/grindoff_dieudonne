@@ -1,9 +1,12 @@
+import { useRouter } from 'next/dist/client/router';
 import React from 'react';
 import { Button } from 'src/components/atoms/Button';
 import { Heading } from 'src/components/atoms/Heading';
 import { Text } from 'src/components/atoms/Text';
 
 const GetStarted = () => {
+  const router = useRouter();
+
   return (
     <section className="bg-white pt-14 sm:mt-6 md:mt-0 flex items-center flex-col w-full overflow-hidden">
       <header className="flex flex-col items-center max-w-2xl">
@@ -28,7 +31,13 @@ const GetStarted = () => {
             <Text size="lg" appearance="white" className="text-center w-80 mb-10">
               Grow your own business while saving the day for the busy people
             </Text>
-            <Button outlined appearance="white" className="xl:px-10" size="large">
+            <Button
+              onClick={() => router.push('/become-a-provider?step=signup')}
+              outlined
+              appearance="white"
+              className="xl:px-10"
+              size="large"
+            >
               Become a Provider
             </Button>
           </div>

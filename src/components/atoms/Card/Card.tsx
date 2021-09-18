@@ -29,7 +29,7 @@ export const Card = React.forwardRef<HTMLDivElement, CardProps>((props, ref) => 
       [`rounded`]: radius === 'rounded',
       [`rounded-none`]: radius === 'square',
       [`rounded-xl`]: radius === 'pill',
-      [`relative overflow-hidden bg-white`]: true,
+      [`relative bg-white`]: true,
       [`border border-basic`]: defaultBorder,
     },
     className

@@ -4,6 +4,7 @@ import { Heading } from 'src/components/atoms/Heading';
 import { Text } from 'src/components/atoms/Text';
 import { Button } from 'src/components/atoms/Button';
 import Portfolio from 'src/components/features/landing/common/Carousels/Portfolio';
+import { useRouter } from 'next/dist/client/router';
 
 const data = [
   {
@@ -29,6 +30,8 @@ const data = [
 ];
 
 const HowItWorks = () => {
+  const router = useRouter()
+  
   return (
     <>
       <div className="bg-basic-light w-full flex flex-col px-3 py-14 lg:px-32 sm:mt-6 md:mt-0">
@@ -70,7 +73,13 @@ const HowItWorks = () => {
             </Text>{' '}
             monthly on Grindoff
           </Text>
-          <Button size="large" className="lg:px-16" appearance="primary" outlined>
+          <Button
+            size="large"
+            onClick={() => router.push('/become-a-provider?step=signup')}
+            className="lg:px-16"
+            appearance="primary"
+            outlined
+          >
             Become a Provider
           </Button>
         </div>

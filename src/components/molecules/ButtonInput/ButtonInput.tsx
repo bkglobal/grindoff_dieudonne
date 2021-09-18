@@ -13,7 +13,7 @@ const ButtonInput = (props: ButtonInputProps) => {
   return (
     <div className="flex rounded-lg">
       <Input size="large" outline={false} className="rounded-l-lg rounded-r-none" {...rest} />
-      <Button radius="pill" size="large" appearance="primary" className="rounded-l-none outline-none">
+      <Button radius="pill" size="large" appearance="primary" className="rounded-l-none outline-none ">
         Search
       </Button>
     </div>

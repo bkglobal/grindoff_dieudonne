@@ -1,5 +1,7 @@
-import 'tailwindcss/tailwind.css'
+import 'tailwindcss/tailwind.css';
 import React from 'react';
+import { Provider } from 'react-redux';
+import store from 'src/redux/store';
 
 interface Props {
   Component: any;
@@ -7,7 +9,11 @@ interface Props {
 }
 
 function GrindOffApp({ Component, pageProps }: Props) {
-  return <Component {...pageProps} />;
+  return (
+    <Provider store={store}>
+      <Component {...pageProps} />
+    </Provider>
+  );
 }
 
-export default GrindOffApp
+export default GrindOffApp;

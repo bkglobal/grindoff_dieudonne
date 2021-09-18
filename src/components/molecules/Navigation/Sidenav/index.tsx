@@ -1,4 +1,5 @@
 import classNames from 'classnames';
+import { useRouter } from 'next/dist/client/router';
 import React, { useState } from 'react';
 import { Button } from 'src/components/atoms/Button';
 import { Icon } from 'src/components/atoms/Icon';
@@ -12,6 +13,7 @@ import ServicesIcon from 'src/components/atoms/Svgs/ServicesIcon';
 
 const Sidenav = () => {
   const [openSideNav, setOpenSideNav] = useState<boolean | null>(null);
+  const router = useRouter();
 
   const sidenavClasses = classNames({
     ['h-full fixed left-0 top-0 bottom-0 w-full bg-white shadow-lg z-10 md:hidden']: true,
@@ -38,24 +40,50 @@ const Sidenav = () => {
           </div>
 
           <div className="p-4 py-6">
-            <Button expanded size="large" outlined appearance="primary">
+            <Button
+              onClick={() => router.push('/become-a-provider?step=signup')}
+              expanded
+              size="large"
+              outlined
+              appearance="primary"
+            >
               Become a Provider
             </Button>
 
             <nav className="mt-10">
-              <Link href="#" decorated={false} className="flex items-center p-4 px-3 hover:bg-gray-50 focus-within:shadow-spread-info">
+              <Link
+                href="#"
+                decorated={false}
+                className="flex items-center p-4 px-3 hover:bg-gray-50 focus-within:shadow-spread-info"
+              >
                 <AboutGrindOffIcon className="mr-4" /> About Grindoff
               </Link>
-              <Link href="#" decorated={false} className="flex items-center p-4 px-3 hover:bg-gray-50 focus-within:shadow-spread-info">
+              <Link
+                href="#"
+                decorated={false}
+                className="flex items-center p-4 px-3 hover:bg-gray-50 focus-within:shadow-spread-info"
+              >
                 <ServicesIcon className="mr-4" /> Services
               </Link>
-              <Link href="#" decorated={false} className="flex items-center p-4 px-3 hover:bg-gray-50 focus-within:shadow-spread-info">
+              <Link
+                href="#"
+                decorated={false}
+                className="flex items-center p-4 px-3 hover:bg-gray-50 focus-within:shadow-spread-info"
+              >
                 <CareersIcon className="mr-4" /> Careers
               </Link>
-              <Link href="#" decorated={false} className="flex items-center p-4 px-3 hover:bg-gray-50 focus-within:shadow-spread-info">
+              <Link
+                href="#"
+                decorated={false}
+                className="flex items-center p-4 px-3 hover:bg-gray-50 focus-within:shadow-spread-info"
+              >
                 <FaqIcon className="mr-4" /> FAQs
               </Link>
-              <Link href="#" decorated={false} className="flex items-center p-4 px-3 hover:bg-gray-50 focus-within:shadow-spread-info">
+              <Link
+                href="#"
+                decorated={false}
+                className="flex items-center p-4 px-3 hover:bg-gray-50 focus-within:shadow-spread-info"
+              >
                 <HelpIcon className="mr-4" /> Help
               </Link>
             </nav>

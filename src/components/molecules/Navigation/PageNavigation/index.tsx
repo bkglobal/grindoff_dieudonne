@@ -1,3 +1,4 @@
+import { useRouter } from 'next/dist/client/router';
 import React, { useState } from 'react';
 import { Button } from 'src/components/atoms/Button';
 import { Icon } from 'src/components/atoms/Icon';
@@ -9,6 +10,7 @@ import Sidenav from '../Sidenav';
 
 const PageNavigation = () => {
   const [showServices, setShowServices] = useState(false);
+  const router = useRouter()
 
   return (
     <header className="w-full shadow py-3 sticky top-0 bg-white z-20">
@@ -56,11 +58,16 @@ const PageNavigation = () => {
               className="mr-2 hidden md:flex"
               radius="pill"
               outlined
+              onClick={() => router.push('/become-a-provider?step=signup')}
               appearance="primary"
             >
               Become a Provider
             </Button>
-            <Button className="ml-2 text-sm md:text-md" radius="pill" appearance="primary">
+            <Button
+              className="ml-2 xx:text-sm xx:leading-4 md:text-md xx:rounded md:rounded-lg xx:border-transparent"
+              radius="pill"
+              appearance="primary"
+            >
               Sign Up
             </Button>
           </div>
