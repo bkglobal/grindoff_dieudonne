@@ -314,6 +314,11 @@ const WeeklyAvailability = () => {
             </div>
           </div>
         </div>
+        <div className="w-7/12 mx-auto mt-16">
+          <Button expanded appearance="primary" size="large">
+            Continue
+          </Button>
+        </div>
       </Card>
     </>
   );
