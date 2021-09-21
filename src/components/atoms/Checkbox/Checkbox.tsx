@@ -1,6 +1,6 @@
 import * as React from 'react';
 import classNames from 'classnames';
-import { BaseProps } from 'src/components/common-types';
+import { BaseHtmlProps, BaseProps } from 'src/components/common-types';
 import { Icon } from '../Icon';
 import { Text } from '../Text';
 export type Size = 'regular' | 'tiny';
@@ -18,7 +18,7 @@ export const uidGenerator = () => {
 
 type ChangeEvent = React.ChangeEvent<HTMLInputElement>;
 
-export interface CheckboxProps extends BaseProps {
+export interface CheckboxProps extends BaseProps, BaseHtmlProps<HTMLInputElement> {
   /**
    * Size of the `Checkbox`
    * @default "regular"

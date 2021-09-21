@@ -203,7 +203,7 @@ const BuildServiceProfileForm = ({ onContinue }: Props) => {
             {services.map((svc) => (
               <Checkbox
                 onChange={() => handleSelectService(svc)}
-                checked={state.selectedCategories.some((s) => s.id === svc.id)}
+                checked={state.selectedCategories.some((s) => s.id === svc.id && svc.name === s.name)}
                 className="mx-2 my-0.5"
                 key={svc.id}
                 label={svc.name}

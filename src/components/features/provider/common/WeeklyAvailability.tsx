@@ -83,6 +83,7 @@ const WeeklyAvailability = () => {
   const [openPricingModal, setOpenPricingModal] = useState(false);
   const [activePricing, setActivePricing] = useState<PricingOptions>(null);
   const [availability] = useState<Day[]>([...weekDays]);
+  const [pricings, setPricings] = useState<string[]>([]);
   const [activeAvailability, setActiveAvailability] = useState<Day | null>(null);
 
   const onEdit = (day: Day | null) => {
@@ -135,26 +136,18 @@ const WeeklyAvailability = () => {
             minWidth={60}
             className="xx:w-9/12 sm:w-auto appearance-none"
           />
-          {activePricing === 'service' && (
-            <Select minWidth={30} className="ml-4 w-20">
-              <option value=""></option>
-              <option value="Sitting room">Sitting room</option>
-              <option value="Kitchen">Kitchen</option>
-              <option value="Compound">Compound</option>
-              <option value="Toilet">Toilet</option>
-              <option value="Rooms">Rooms</option>
-              <option value="Backyard">Backyard</option>
-            </Select>
-          )}
           {activePricing === 'hourly' && (
             <Text appearance="subtle" className="ml-2">
               / hr
             </Text>
           )}
           {activePricing === 'service' && (
-            <Text appearance="subtle" className="ml-2 whitespace-nowrap">
-              / items
-            </Text>
+            <>
+              <Text appearance="subtle" className="ml-2 whitespace-nowrap">
+                /
+              </Text>
+              <Input minWidth={30} className="ml-4 w-20" />
+            </>
           )}
         </div>
       </div>
@@ -186,7 +179,7 @@ const WeeklyAvailability = () => {
       >
         <div className="w-full flex flex-col mb-6">
           <Label>Select working days from Monday - Sunday or choose all days</Label>
-          <div className="border flex flex-col py-6 px-20">
+          <div className="border flex flex-col py-6 xx:px-4 lg:px-20">
             <div className="grid grid-cols-5 mb-4">
               <div className="col-span-2">
                 <Text className="" weight="normal">
@@ -247,13 +240,7 @@ const WeeklyAvailability = () => {
           <Label>How do you want to charge for your services?</Label>
           <div className="flex flex-col">
             <div className="flex items-center my-2">
-              <Checkbox label="Fixed price" />
-              <Icon
-                name="edit"
-                className="ml-3 cursor-pointer"
-                onClick={() => onOpenPricingModal('fixed')}
-                appearance="subtle-dark"
-              />
+              <Checkbox label="Fixed price" onClick={() => onOpenPricingModal('fixed')} />
             </div>
             {/* <div className="flex flex-col w-full">
               <OutsideClick onOutsideClick={() => setShowDiscussPricingBanner(false)}>
@@ -295,22 +282,10 @@ const WeeklyAvailability = () => {
               )}
             </div> */}
             <div className="flex items-center my-2">
-              <Checkbox label="Service price" />
-              <Icon
-                name="edit"
-                className="ml-3 cursor-pointer"
-                onClick={() => onOpenPricingModal('service')}
-                appearance="subtle-dark"
-              />
+              <Checkbox label="Service price" onClick={() => onOpenPricingModal('service')} />
             </div>
             <div className="flex items-center my-2">
-              <Checkbox label="Hourly price" />
-              <Icon
-                name="edit"
-                className="ml-3 cursor-pointer"
-                onClick={() => onOpenPricingModal('hourly')}
-                appearance="subtle-dark"
-              />
+              <Checkbox label="Hourly price" onClick={() => onOpenPricingModal('hourly')} />
             </div>
           </div>
         </div>
