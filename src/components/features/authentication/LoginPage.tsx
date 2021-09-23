@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { Button } from 'src/components/atoms/Button';
 import { Input } from 'src/components/atoms/Input';
 import { Text } from 'src/components/atoms/Text';
@@ -7,9 +7,7 @@ import { Link } from 'src/components/atoms/Link';
 import { FullLogo } from 'src/components/atoms/Logo';
 import { Heading } from 'src/components/atoms/Heading';
 
-interface Props {}
-
-const LoginForm = () => {
+const LoginPage = () => {
   return (
     <div className="grid grid-cols-5 m-0 bg-white w-full p-0">
       <div className="xx:col-span-5 lg:col-span-3 m-0 p-0 bg-auth-image xx:h-44 xs:h-52 sm:h-80 lg:h-screen bg-cover bg-center bg-no-repeat">
@@ -50,7 +48,7 @@ const LoginForm = () => {
               <Input minWidth="100%" type="password" size="large" className="mt-2 bg-body-grey" />
             </div>
             <div className="flex justify-end">
-              <Link href="#" appearance="primary">
+              <Link href="/forgot-password" appearance="primary">
                 Forgot Password?
               </Link>
             </div>
@@ -69,7 +67,7 @@ const LoginForm = () => {
           </form>
           <Text size="sm">
             Don’t have an account?{' '}
-            <Link href="/signup" appearance="primary">
+            <Link href="/become-a-provider?step=signup" appearance="primary">
               Sign Up
             </Link>
           </Text>
@@ -79,4 +77,4 @@ const LoginForm = () => {
   );
 };
 
-export default LoginForm;
+export default LoginPage;

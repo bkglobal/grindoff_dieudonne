@@ -10,7 +10,7 @@ import Sidenav from '../Sidenav';
 
 const PageNavigation = () => {
   const [showServices, setShowServices] = useState(false);
-  const router = useRouter()
+  const router = useRouter();
 
   return (
     <header className="w-full shadow py-3 sticky top-0 bg-white z-20">
@@ -67,6 +67,7 @@ const PageNavigation = () => {
               className="ml-2 xx:text-sm xx:leading-4 md:text-md xx:rounded md:rounded-lg xx:border-transparent"
               radius="pill"
               appearance="primary"
+              onClick={() => router.push('/become-a-provider?step=signup')}
             >
               Sign Up
             </Button>

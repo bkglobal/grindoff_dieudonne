@@ -1,10 +1,10 @@
 import React from 'react';
-import LoginForm from 'src/components/features/authentication/Login';
+import LoginPage from 'src/components/features/authentication/LoginPage';
 
 const Login = () => {
   return (
     <div>
-      <LoginForm />
+      <LoginPage />
     </div>
   );
 };
