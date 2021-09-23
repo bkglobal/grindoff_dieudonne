@@ -45,12 +45,12 @@ const PageNavigation = () => {
               </Link>
               <Services open={showServices} onClose={() => setShowServices(false)} />
             </span>
-            <Link className="mx-3 mr-5" decorated={false} href="/">
+            <Link className="mx-3 mr-5" decorated={false} href="/login">
               Sign In
             </Link>
           </nav>
           <div className="ml-5 flex items-center">
-            <Link className="mx-3 mr-5 md:hidden text-sm md:text-lg" decorated={false} href="/">
+            <Link className="mx-3 mr-5 md:hidden text-sm md:text-lg" decorated={false} href="/login">
               Sign In
             </Link>
             <Button

@@ -7,6 +7,7 @@ module.exports = {
     ...defaultTheme,
     extend: {
       backgroundImage: (theme) => ({
+        'auth-image': "url('/assets/auth/auth-image.jpg')",
         'why-choose-grindoff': "url('/assets/home/why-choose-grindoff-banner.jpg')",
         'earn-on-grindoff': "url('/assets/home/earn-monthly-on-grindoff.png')",
         'get-started-1': 'url("/assets/home/ready-to-get-started-1.jpg")',

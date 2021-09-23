@@ -5,7 +5,7 @@ import GenericText from '../_text';
 import { BaseHtmlProps, BaseProps } from 'src/components/common-types';
 
 export type Size = 'lg' | 'xl' | '2xl' | '3xl' | '4xl' | '5xl' | '6xl';
-export type Appearance = 'default' | 'subtle' | 'disabled' | 'white';
+export type Appearance = 'default' | 'subtle' | 'disabled' | 'white' | 'primary';
 
 export interface HeadingProps extends BaseProps, BaseHtmlProps<HTMLHeadingElement> {
   /**

@@ -83,7 +83,6 @@ const WeeklyAvailability = () => {
   const [openPricingModal, setOpenPricingModal] = useState(false);
   const [activePricing, setActivePricing] = useState<PricingOptions>(null);
   const [availability] = useState<Day[]>([...weekDays]);
-  const [pricings, setPricings] = useState<string[]>([]);
   const [activeAvailability, setActiveAvailability] = useState<Day | null>(null);
 
   const onEdit = (day: Day | null) => {
