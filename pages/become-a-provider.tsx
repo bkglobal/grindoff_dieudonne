@@ -6,9 +6,9 @@ const BecomeAProvider = () => {
   const router = useRouter();
 
   return (
-    <div className="flex flex-col items-start justify-start min-h-screen">
+    <>
       <BecomeProviderPage step={router.query.step as StepSlug} router={router} />
-    </div>
+    </>
   );
 };
 
