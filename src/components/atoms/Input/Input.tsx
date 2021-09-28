@@ -199,7 +199,7 @@ export const Input = React.forwardRef<HTMLInputElement, InputProps>((props, forw
       ['focus-within:bg-white focus-within:border-info focus-within:shadow-spread-info']: outline && !error,
       ['h-13 py-3']: size === 'large',
       ['h-10 py-2']: size === 'regular',
-      ['h-7 py-1']: size === 'tiny',
+      ['h-8 py-1 text-sm']: size === 'tiny',
       ['bg-basic-lightest border-basic-lightest pointer-events-none']: disabled || readOnly,
       ['bg-white border-alert focus-within:bg-white focus-within:border-alert focus-within:shadow-spread-alert']: error,
     },
@@ -232,12 +232,12 @@ export const Input = React.forwardRef<HTMLInputElement, InputProps>((props, forw
 
   const renderInput = () => (
     <div className={classes} style={{ minWidth }} onClick={() => ref.current?.focus()}>
-      {size !== 'tiny' && icon && (
+      {icon && (
         <div className={leftIconClass}>
           <Icon name={icon} size={sizeMapping[size]} />
         </div>
       )}
-      {size !== 'tiny' && customIcon && (
+      {customIcon && (
         <div className={leftIconClass} style={{ fontSize: sizeMapping[size] }}>
           {customIcon}
         </div>
