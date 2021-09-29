@@ -8,7 +8,7 @@ import Testimonials from './common/Testimonials';
 import TrendingGrinds from './common/TrendingGrinds';
 import WhyChooseGrindoff from './common/WhyChooseGrindoff';
 import FeaturedProvidersSection from './common/FeaturedProviders';
-import { PageNavigation } from 'src/components/molecules/Navigation';
+import { PageNavigation } from 'src/components/features/landing/common/Navigation';
 import GetStarted from './common/GetStarted';
 import MobileApp from './common/MobileApp';
 import Footer from '../footer/Footer';

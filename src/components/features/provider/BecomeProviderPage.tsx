@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { Heading } from 'src/components/atoms/Heading';
 import { Text } from 'src/components/atoms/Text';
-import { PageNavigation } from 'src/components/molecules/Navigation';
+import { PageNavigation } from 'src/components/features/landing/common/Navigation';
 import SignupForm from './common/SignupForm';
 import Stepper, { Step } from 'src/components/molecules/Stepper/Stepper';
 import { NextRouter } from 'next/dist/client/router';

@@ -4,15 +4,15 @@ import { Icon } from 'src/components/atoms/Icon';
 import { Input } from 'src/components/atoms/Input';
 import { Link } from 'src/components/atoms/Link';
 import { SMGrindoffIcon } from 'src/components/atoms/Logo/dashboard';
+import Notification from 'src/components/atoms/Notification';
 import { Text } from 'src/components/atoms/Text';
+import MobileSideNavigation from './MbileSideNavigation';
 
 const HeaderNavigation = () => {
   return (
     <div className="flex items-center justify-between xx:h-14 md:h-20 bg-white xx:px-3 md:px-6">
-      <div className="flex">
-        <span className="-ml-1 px-1 mt-2 md:hidden">
-          <Icon name="menu" size={22} />
-        </span>
+      <div className="flex z-20">
+        <MobileSideNavigation />
         <Link href="/" className="flex md:hidden items-center">
           <SMGrindoffIcon />
         </Link>
@@ -40,9 +40,7 @@ const HeaderNavigation = () => {
           </Link>
         </nav>
         <div className="flex items-center justify-end sm:w-60">
-          <span className="xx:mx-4 sm:mx-6">
-            <Icon name="notifications" />
-          </span>
+          <Notification />
           <div className="flex items-center">
             <div className="bg-body-grey p-0.5 rounded-full">
               <Avatar src="/assets/home/avatar-2.jpg" size="35px" round name="Olaniyan Saheed" />

@@ -21,7 +21,7 @@ export interface SidenavLink {
   icon: ({ stroke, fill, ...rest }: React.SVGProps<SVGSVGElement>) => JSX.Element;
 }
 
-const routes = [
+export const routes = [
   { id: 1, link: '/dashboard', text: 'Dashboard', icon: DashboardIcon, isActive: true },
   { id: 2, link: '/dashboard/history', text: 'History', icon: HistoryIcon, isActive: false },
   { id: 3, link: '/dashboard/account', text: 'Account', icon: AccountIcon, isActive: false },
