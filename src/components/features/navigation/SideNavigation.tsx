@@ -74,7 +74,7 @@ const SideNavigation = () => {
             <span className="w-9">
               <Icon fill={isActive ? '#14A800' : '#1A1A1A'} />
             </span>
-            <Text appearance={isActive ? 'primary' : 'default'} weight="normal" className="xx:text-sm">
+            <Text appearance={isActive ? 'primary' : 'default'} weight="normal" className="xx:text-sm whitespace-nowrap">
               {route.text}
             </Text>
           </Link>
