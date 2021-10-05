@@ -11,3 +11,15 @@ export type BaseProps = {
    */
   className?: string;
 };
+
+export type Job = {
+  id: number;
+  title: string;
+  requestDate: string;
+  budgetRate: string;
+  jobType: string;
+  description: string;
+  posted: string;
+  location: string;
+  bidAmount: number;
+};

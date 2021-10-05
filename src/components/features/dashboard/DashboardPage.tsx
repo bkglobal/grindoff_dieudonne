@@ -32,6 +32,17 @@ const PageHeader = styled.header`
     justify-content: center;
     transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out, border-color 0.15s ease-in-out,
       box-shadow 0.15s ease-in-out;
+
+    &:hover {
+      &::after {
+        height: 0;
+        border-top: 3px solid #14a800;
+        border-top-left-radius: 100%;
+        border-top-right-radius: 100%;
+        transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out,
+          border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+      }
+    }
   }
 
   .Tab--active span {

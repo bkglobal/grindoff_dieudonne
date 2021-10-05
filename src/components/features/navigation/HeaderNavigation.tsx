@@ -10,7 +10,10 @@ import MobileSideNavigation from './MbileSideNavigation';
 
 const HeaderNavigation = () => {
   return (
-    <div className="flex items-center justify-between xx:h-14 md:h-20 bg-white xx:px-3 md:px-6">
+    <div
+      className="flex items-center justify-between xx:h-14 md:h-20 bg-white xx:px-3 md:px-6"
+      style={{ boxShadow: '6px 1px 5px rgba(0, 0, 0, 0.05)' }}
+    >
       <div className="flex z-20">
         <MobileSideNavigation />
         <Link href="/" className="flex md:hidden items-center">
