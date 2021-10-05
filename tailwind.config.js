@@ -65,6 +65,7 @@ module.exports = {
       boxShadow: {
         'spread-info': '0 0 0 3px rgba(0, 112, 221, 0.16)',
         'spread-alert': '0 0 0 3px rgba(253, 0, 0, 0.14)',
+        DEFAULT: '0px 2px 4px rgba(0, 0, 0, 0.05)'
       },
     },
     screens: {
