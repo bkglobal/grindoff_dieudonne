@@ -86,7 +86,10 @@ module.exports = {
       default: '#1A1A1A',
       disabled: '#a6a6a6',
       body: {
-        grey: '#F9FAFB',
+        grey: {
+          DEFAULT: '#F9FAFB',
+          lightest: 'rgba(229, 229, 229, 0.15)',
+        },
       },
       dark: {
         lightest: 'rgba(0, 0, 0, 0.07)',

@@ -1,5 +1,6 @@
 import classNames from 'classnames';
 import React, { useState } from 'react';
+import { Button } from 'src/components/atoms/Button';
 import { Card } from 'src/components/atoms/Card';
 import { Heading } from 'src/components/atoms/Heading';
 import { Text } from 'src/components/atoms/Text';
@@ -50,15 +51,42 @@ const AccountPage = () => {
       {activeTab === 'profile' && <AccountProfileForm />}
       {activeTab === 'id_verification' && (
         <Card className="my-6 xx:border-none xx:px-3 md:px-6 py-8">
-          <Text size="sm">
+          <Text size="lg" className="w-11/12">
             To Enjoy the full benefit of GrindOff without any restriction, Please Complete your Account
             settings below to enjoy the all benefits of GrindOff Services
           </Text>
 
-          <div className="grid grid-cols-2">
-            <div className="">
-
+          <div className="grid grid-cols-2 gap-8 mt-16">
+            <div className="bg-body-grey-lightest flex items-center h-20 p-2">
+              <div className="h-full w-16 rounded-sm flex justify-center items-center bg-primary-lightest mr-8">
+                <img src="/assets/icons/id.png" alt="ID" className="w-6" />
+              </div>
+              <Text className="font-medium">Upload Government Issued ID</Text>
             </div>
+            <div className="bg-body-grey-lightest flex items-center h-20 p-2">
+              <div className="h-full w-16 rounded-sm flex justify-center items-center bg-primary-lightest mr-8">
+                <img src="/assets/icons/id.png" alt="NIN" className="w-6" />
+              </div>
+              <Text className="font-medium">Upload NIN</Text>
+            </div>
+            <div className="bg-body-grey-lightest flex items-center h-20 p-2">
+              <div className="h-full w-16 rounded-sm flex justify-center items-center bg-primary-lightest mr-8">
+                <img src="/assets/icons/Bank.png" alt="BVN" className="w-6" />
+              </div>
+              <Text className="font-medium">Input your BVN</Text>
+            </div>
+            <div className="bg-body-grey-lightest flex items-center h-20 p-2">
+              <div className="h-full w-16 rounded-sm flex justify-center items-center bg-primary-lightest mr-8">
+                <img src="/assets/icons/Bullet Points Numbers.png" alt="Bank" className="w-6" />
+              </div>
+              <Text className="font-medium">Bank Account Information</Text>
+            </div>
+          </div>
+
+          <div className="w-4/12 mx-auto mt-16 mb-16">
+            <Button expanded appearance="primary" size="large" className="xx:border-transparent">
+              Save
+            </Button>
           </div>
         </Card>
       )}
