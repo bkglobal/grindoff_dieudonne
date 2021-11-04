@@ -1,14 +1,17 @@
-import React from 'react';
+import React, { useState } from 'react';
 import Avatar from 'react-avatar';
 import { Icon } from 'src/components/atoms/Icon';
 import { Input } from 'src/components/atoms/Input';
 import { Link } from 'src/components/atoms/Link';
 import { SMGrindoffIcon } from 'src/components/atoms/Logo/dashboard';
 import Notification from 'src/components/atoms/Notification';
-import { Text } from 'src/components/atoms/Text';
+import Dropdown from './dropdowns/Dropdown';
 import MobileSideNavigation from './MbileSideNavigation';
+import { OutsideClick } from 'src/components/atoms/OutsideClick';
 
 const HeaderNavigation = () => {
+  const [showAvatarDropdown, setAvatarDropdown] = useState(false);
+  const [showNotificationDropdown, setNotificationDropdown] = useState(false);
   return (
     <div
       className="flex items-center justify-between xx:h-14 md:h-20 bg-white xx:px-3 md:px-6"
@@ -43,16 +46,33 @@ const HeaderNavigation = () => {
           </Link>
         </nav>
         <div className="flex items-center justify-end sm:w-60">
-          <Notification />
-          <div className="flex items-center">
-            <div className="bg-body-grey p-0.5 rounded-full">
-              <Avatar src="/assets/home/avatar-2.jpg" size="35px" round name="Olaniyan Saheed" />
+        <span className="relative">
+          <OutsideClick
+          className="cursor-pointer"
+          onClick={() => setNotificationDropdown((prev) => !prev)}
+          onOutsideClick={() => setNotificationDropdown(false)}>
+            <Notification />
+          </OutsideClick>
+          <Dropdown open={showNotificationDropdown} onClose={() => setNotificationDropdown(false)} notification />
+          </span>
+          <span className="relative">
+          <OutsideClick
+            className="cursor-pointer"
+            onClick={() => setAvatarDropdown((prev) => !prev)}
+            onOutsideClick={() => setAvatarDropdown(false)}
+          >
+            <div className="flex items-center">
+              <div className="bg-body-grey p-0.5 rounded-full">
+                <Avatar src="/assets/home/avatar-2.jpg" size="35px" round name="Olaniyan Saheed" />
+              </div>
+              <Link size="sm" className="xx:text-xs sm:text-sm mx-1" href="" decorated={false}>
+                Olaniyan Saheed
+              </Link>
+              <Icon name={showAvatarDropdown ? 'keyboard_arrow_up' : 'keyboard_arrow_down'} />
             </div>
-            <Text size="sm" className="xx:text-xs sm:text-sm mx-1">
-              Olaniyan Saheed
-            </Text>
-            <Icon name="keyboard_arrow_down" />
-          </div>
+          </OutsideClick>
+            <Dropdown open={showAvatarDropdown} onClose={() => setAvatarDropdown(false)} />
+          </span>
         </div>
       </div>
     </div>
