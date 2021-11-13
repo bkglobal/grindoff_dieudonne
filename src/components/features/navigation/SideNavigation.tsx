@@ -6,7 +6,7 @@ import AccountIcon from 'src/components/atoms/Svgs/dashboard/AccountIcon';
 import BillingInfoIcon from 'src/components/atoms/Svgs/dashboard/BillingInfoIcon';
 import DashboardIcon from 'src/components/atoms/Svgs/dashboard/DashboardIcon';
 import HistoryIcon from 'src/components/atoms/Svgs/dashboard/HistoryIcon';
-import IncomeIcon from 'src/components/atoms/Svgs/dashboard/IncomeIcon';
+import ExpenseIcon from 'src/components/atoms/Svgs/dashboard/ExpenseIcon';
 import LockIcon from 'src/components/atoms/Svgs/dashboard/LockIcon';
 import ReferralsIcon from 'src/components/atoms/Svgs/dashboard/ReferralsIcon';
 import SupportIcon from 'src/components/atoms/Svgs/dashboard/SupportIcon';
@@ -25,7 +25,7 @@ export const routes = [
   { id: 1, link: '/dashboard', text: 'Dashboard', icon: DashboardIcon, isActive: true },
   { id: 2, link: '/dashboard/history', text: 'History', icon: HistoryIcon, isActive: false },
   { id: 3, link: '/dashboard/account', text: 'Account', icon: AccountIcon, isActive: false },
-  { id: 4, link: '/dashboard/income', text: 'Income', icon: IncomeIcon, isActive: false },
+  { id: 4, link: '/dashboard/expenses', text: 'Expenses', icon: ExpenseIcon, isActive: false },
   { id: 5, link: '/dashboard/referrals', text: 'Referrals', icon: ReferralsIcon, isActive: false },
   {
     id: 6,
