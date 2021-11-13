@@ -122,7 +122,7 @@ const ExpensesPage = () => {
 
   return (
     <div className="flex flex-col xs:px-3 xs:pb-3 lg:px-6 lg:pb-6">
-      <Tabs onTabChange={handleChangeTab} tabItems={TabItems.map((tab) => ({ tabTitle: tab.tabTitle }))} />
+      <Tabs onTabChange={handleChangeTab} shadow="light" tabItems={TabItems.map((tab) => ({ tabTitle: tab.tabTitle }))} />
       <hr className="my-8" />
       <Card>
         <section className="p-4">{tabItem.title}</section>

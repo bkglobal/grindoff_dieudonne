@@ -5,6 +5,10 @@ module.exports = {
   darkMode: false, // or 'media' or 'class'
   theme: {
     ...defaultTheme,
+    gradientColorStops: {
+      'bg-card-green': '#14A800',
+      'bg-card-yellow': '#FFDA17',
+    },
     extend: {
       backgroundImage: (theme) => ({
         'auth-image': "url('/assets/auth/auth-image.jpg')",
@@ -12,6 +16,7 @@ module.exports = {
         'earn-on-grindoff': "url('/assets/home/earn-monthly-on-grindoff.png')",
         'get-started-1': 'url("/assets/home/ready-to-get-started-1.jpg")',
         'get-started-2': 'url("/assets/home/ready-to-get-started-2.jpg")',
+        'wallet-bg': 'url("/assets/shared/wallet-bg.png")',
       }),
       inset: {
         100: '408px',
