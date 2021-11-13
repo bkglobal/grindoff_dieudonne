@@ -1,6 +1,7 @@
 import classNames from 'classnames';
 import { useState } from 'react';
 import { Card } from 'src/components/atoms/Card';
+import { Shadow } from 'src/components/atoms/Card/Card';
 import { Text } from 'src/components/atoms/Text';
 import styled from 'styled-components';
 
@@ -61,9 +62,11 @@ export type TypeTabPayload = {
 interface ITabsProps {
   tabItems: TypeTabPayload[];
   onTabChange: (index: number) => void;
+  shadow: Shadow;
+  border?: boolean;
 }
 
-function Tabs({ tabItems, onTabChange }: ITabsProps) {
+function Tabs({ tabItems, onTabChange, shadow, border=true }: ITabsProps) {
   const [activeTabIndex, setActiveTabIndex] = useState(0);
 
   const handleTabClick = (tabIndex: number) => {
@@ -73,12 +76,12 @@ function Tabs({ tabItems, onTabChange }: ITabsProps) {
 
   return (
     <PageHeader>
-      <Card className="flex flex-col shadow-md" shadow="light">
-        <div className="flex border-b w-full overflow-x-auto overflow-y-hidden">
+      <Card className={classNames("flex flex-col", {'border-none': !border})} shadow={shadow}>
+        <div className="grid auto-cols-auto grid-flow-col border-b w-full overflow-x-auto overflow-y-hidden">
           {tabItems.map((item, index) => (
             <div
               key={index}
-              className={classNames('Tab hover:bg-gray-100 rounded ', {
+              className={classNames('Tab hover:bg-gray-100 ', {
                 'bg-body-grey': activeTabIndex !== index,
                 'bg-white Tab--active': activeTabIndex === index,
               })}
